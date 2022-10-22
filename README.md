@@ -71,3 +71,15 @@
 
 </details>
 
+---
+
+## Reference List
+
+> Kotlin자체가 처음이 아니다 보니 사용법에 대한 Reference를 계속 찾아보며 진행할 필요가 있었고, 참고한 Reference 포스트 리스트입니다.
+
+#### Riot Properties 설정 Reference
+
+1. [log4j2의 설정 포스트](https://www.wool-dev.com/backend-engineering/spring/spring-kotlin-logging-simple)
+2. [Properties의 선언 방법](https://velog.io/@lsb156/Spring-Boot-Properties-Usage)
+3. [Bean주입](https://jobc.tistory.com/198)
+
