@@ -10,7 +10,10 @@ import org.springframework.web.client.RestTemplate
 @Configuration
 class RestTemplateConfig {
 
-    // Setting Connection Pool
+    /*
+    Setting Connection Pool
+    Connection Pool의 경우에는 로컬로만 진행할 것이기에 10개로 충분하다 판단
+    */
     @Bean
     fun httpClient(): HttpClient {
         return HttpClientBuilder.create()
@@ -20,6 +23,7 @@ class RestTemplateConfig {
     }
 
     // Set Timeout And HttpClient
+    // ReadTimeOut > Connection TimeOut
     @Bean
     fun requestFactory(httpClient: HttpClient): HttpComponentsClientHttpRequestFactory {
         var requestFactory: HttpComponentsClientHttpRequestFactory =

@@ -1,4 +1,4 @@
-# YourGgTask
+# YourGGTask
 
 ## 개요
 
@@ -77,9 +77,18 @@
 
 > Kotlin자체가 처음이 아니다 보니 사용법에 대한 Reference를 계속 찾아보며 진행할 필요가 있었고, 참고한 Reference 포스트 리스트입니다.
 
+### 1. Bean 설정 구현
+
+#### RestTemplate 설정
+
+1. [RestTemplate설정 참고 소스](https://github.com/f-lab-edu/NoobLoL/blob/develop/src/main/java/com/nooblol/global/config/RestTemplateConfig.java)
+
+> 과거 프로젝트 당시에 사용했던 Java소스 Kotlin으로 변환
+
 #### Riot Properties 설정 Reference
 
 1. [log4j2의 설정 포스트](https://www.wool-dev.com/backend-engineering/spring/spring-kotlin-logging-simple)
 2. [Properties의 선언 방법](https://velog.io/@lsb156/Spring-Boot-Properties-Usage)
 3. [Bean주입](https://jobc.tistory.com/198)
+
 
