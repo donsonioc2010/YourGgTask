@@ -91,4 +91,16 @@
 2. [Properties의 선언 방법](https://velog.io/@lsb156/Spring-Boot-Properties-Usage)
 3. [Bean주입](https://jobc.tistory.com/198)
 
+### 2. Summoner 기능 구현
 
+#### 계정 정보 조회 기능 구현
+
+1. [DTO의 선언방법](https://tech.wheejuni.com/2018/03/19/hackathon-kotlin/)
+2. [DTO의 ObjectMapper Issue](https://kapentaz.github.io/kotlin/json/Kotlin-and-Jackson-(ObjectMapper)/#)
+
+---
+
+## 제작을 하면서 생긴 궁금증들?
+
+1. `@Slf4j` Annotation을 자주 사용했는데 사용이 불가했었다. 비슷하게 만드는 방법을 몰라서 어쩔 수 없이 직접 선언을 진행했는데, 방법이 존재하는지...?
+2. ResponseEntity의 OK를 제외하고 Return이 안된다...
