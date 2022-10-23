@@ -98,6 +98,10 @@
 1. [DTO의 선언방법](https://tech.wheejuni.com/2018/03/19/hackathon-kotlin/)
 2. [DTO의 ObjectMapper Issue](https://kapentaz.github.io/kotlin/json/Kotlin-and-Jackson-(ObjectMapper)/#)
 
+### 3. Match 기능구현중
+
+1. [Kotlin Enum 활용법](https://banziha104.github.io/2020/05/05/kotlin-enum/)
+
 ---
 
 ## 제작을 하면서 생긴 궁금증들?

@@ -1,6 +1,6 @@
 package com.example.yourggtask.summoner.dto
 
-data class SummonerDTO(
+data class SummonerDto(
     val accountId: String,
     val profileIconId: Int,
     val revisionDate: Long,
