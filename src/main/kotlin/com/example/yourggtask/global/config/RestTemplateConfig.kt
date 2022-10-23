@@ -38,7 +38,7 @@ class RestTemplateConfig {
 
     //Set RequestFactory In RestTemplate
     @Bean
-    fun RestTemplate(requestFactory: HttpComponentsClientHttpRequestFactory): RestTemplate {
+    fun restTemplate(requestFactory: HttpComponentsClientHttpRequestFactory): RestTemplate {
         return RestTemplate(requestFactory)
     }
 }
