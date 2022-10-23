@@ -7,7 +7,6 @@ import org.apache.commons.lang3.StringUtils
 import org.slf4j.LoggerFactory
 import org.springframework.http.*
 import org.springframework.stereotype.Service
-import org.springframework.util.ObjectUtils
 import org.springframework.web.client.RestTemplate
 import java.lang.IllegalArgumentException
 
@@ -30,9 +29,10 @@ class AccountInfoService(
 
         var searchUrl: String =
             riotConstants.summonerInfoBySummonerName.replace(
-                "{summonerName}", summonerNameWhiteSpaceReplace(summonerName.trim())
+                "{summonerName}",
+                summonerNameWhiteSpaceReplace(summonerName.trim())
             )
-
+        log.info("[SummonerController.getAccountInfo] RequestUrl : ${searchUrl}")
 
         return restTemplate.exchange(
             searchUrl, HttpMethod.GET, HttpEntity<String>(httpHeaders), SummonerDTO::class.java
