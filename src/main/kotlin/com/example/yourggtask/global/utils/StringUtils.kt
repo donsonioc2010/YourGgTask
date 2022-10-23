@@ -15,7 +15,7 @@ class StringUtils {
             if (StringUtils.isBlank(trimSummonerName))
                 throw IllegalArgumentException("[StringUtils] : SummonerName Is Blank")
 
-            return trimSummonerName.replace(" ", "")
+            return trimSummonerName.replace(" ", "%20")
         }
     }
 }
