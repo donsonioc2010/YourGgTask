@@ -1,7 +1,7 @@
 package com.example.yourggtask.summoner.controller
 
 import com.example.yourggtask.summoner.dto.LeagueEntryDto
-import com.example.yourggtask.summoner.dto.SummonerDTO
+import com.example.yourggtask.summoner.dto.SummonerDto
 import com.example.yourggtask.summoner.service.AccountInfoService
 import org.slf4j.LoggerFactory
 import org.springframework.http.HttpStatus
@@ -29,7 +29,7 @@ class SummonerController(private val accountInfoService: AccountInfoService) {
      * @param SummonerName 소환사명
      */
     @GetMapping("/info/by-summoner-name")
-    fun getAccountInfo(@NotBlank @RequestParam(value = "name") summonerName: String): ResponseEntity<SummonerDTO> {
+    fun getAccountInfo(@NotBlank @RequestParam(value = "name") summonerName: String): ResponseEntity<SummonerDto> {
         log.info("[SummonerController.getAccountInfo] Search SummonerName : $summonerName")
         return accountInfoService.getAccountInfoBySummonerName(summonerName)
     }

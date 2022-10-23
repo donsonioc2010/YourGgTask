@@ -1,6 +1,7 @@
 package com.example.yourggtask.match.controller
 
 import com.example.yourggtask.global.utils.enum.MatchRankType
+import com.example.yourggtask.match.dto.MatchDto
 import com.example.yourggtask.match.service.MatchService
 import org.slf4j.LoggerFactory
 import org.springframework.http.ResponseEntity
@@ -36,5 +37,27 @@ class MatchController(private val matchService: MatchService) {
         )
     }
 
+    /**
+     * 해당 사용자의 최근 경기 데이터 List획득
+     * @param name : 조회하고자 하는 소환사의 puuid
+     * @param matchType : 솔랭, 튜토리얼, 전체 등등 조회 타입
+     * @param start : 조회를 할 시작 Index
+     * @param count: 데이터 조회 건수
+     */
+    @GetMapping("/list")
+    fun getMatchDetailListByPuuid(
+        @NotBlank @RequestParam(value = "puuid") puuid: String,
+        @RequestParam(value = "matchType", defaultValue = "ALL") matchType: String,
+        @RequestParam(value = "start", defaultValue = "0") startNum: Int,
+        @RequestParam(value = "count", defaultValue = "20") count: Int,
+    ): ResponseEntity<List<MatchDto>> {
+        log.info("[getMatchDetailListByPuuid] Request Puuid : $puuid")
+
+        return ResponseEntity.ok().body(
+            matchService.getMatchDetailListByPuuid(
+                puuid, MatchRankType.findEnum(matchType).get(), startNum, count
+            )
+        )
+    }
 
 }
