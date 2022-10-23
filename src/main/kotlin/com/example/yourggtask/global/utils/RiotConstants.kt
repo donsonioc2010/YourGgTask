@@ -28,6 +28,9 @@ class RiotConstants {
     @Value("\${match.match-detail-info.by-match-id}")
     lateinit var matchInfoByMatchId: String
 
+    @Value("\${league.summoner-rank.by-summoner-id}")
+    lateinit var leagueSummonerRankDataBySummonerId: String
+
     @Bean
     fun httpHeader(): HttpHeaders {
         var httpHeaders: HttpHeaders = HttpHeaders()
