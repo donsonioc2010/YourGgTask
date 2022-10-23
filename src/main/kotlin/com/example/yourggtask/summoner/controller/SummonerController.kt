@@ -1,5 +1,6 @@
 package com.example.yourggtask.summoner.controller
 
+import com.example.yourggtask.summoner.dto.LeagueEntryDto
 import com.example.yourggtask.summoner.dto.SummonerDTO
 import com.example.yourggtask.summoner.service.AccountInfoService
 import org.slf4j.LoggerFactory
@@ -31,6 +32,12 @@ class SummonerController(private val accountInfoService: AccountInfoService) {
     fun getAccountInfo(@NotBlank @RequestParam(value = "name") summonerName: String): ResponseEntity<SummonerDTO> {
         log.info("[SummonerController.getAccountInfo] Search SummonerName : $summonerName")
         return accountInfoService.getAccountInfoBySummonerName(summonerName)
+    }
+
+    @GetMapping("/rank-history/by-summoner-name")
+    fun getRankHistory(@NotBlank @RequestParam(value = "name") summonerName: String): ResponseEntity<List<LeagueEntryDto>> {
+        log.info("[SummonerController.getRankHistory] Search SummonerName : $summonerName")
+        return accountInfoService.getAccountRankTypeDataListBySummonerName(summonerName)
     }
 
     /**
