@@ -3,7 +3,7 @@ package com.example.yourggtask.summoner.service
 import com.example.yourggtask.global.utils.RiotConstants
 import com.example.yourggtask.global.utils.StringUtils.Companion.summonerNameWhiteSpaceReplace
 import com.example.yourggtask.summoner.dto.LeagueEntryDto
-import com.example.yourggtask.summoner.dto.SummonerDTO
+import com.example.yourggtask.summoner.dto.SummonerDto
 import org.apache.commons.lang3.StringUtils
 import org.slf4j.LoggerFactory
 import org.springframework.http.*
@@ -24,7 +24,7 @@ class AccountInfoService(
     /**
      * @param summonerName 계정 정보를 조회하고자 하는 소환사명
      */
-    fun getAccountInfoBySummonerName(summonerName: String): ResponseEntity<SummonerDTO> {
+    fun getAccountInfoBySummonerName(summonerName: String): ResponseEntity<SummonerDto> {
         if (StringUtils.isBlank(summonerName)) {
             log.warn(this.javaClass.methods.toString() + "summoner name isBlank : $summonerName")
             throw IllegalArgumentException("Summoner Name is Blank")
@@ -38,7 +38,7 @@ class AccountInfoService(
         log.info("[SummonerController.getAccountInfo] RequestUrl : ${searchUrl}")
 
         return restTemplate.exchange(
-            searchUrl, HttpMethod.GET, HttpEntity<String>(httpHeaders), SummonerDTO::class.java
+            searchUrl, HttpMethod.GET, HttpEntity<String>(httpHeaders), SummonerDto::class.java
         )
     }
 
@@ -62,7 +62,7 @@ class AccountInfoService(
     }
 
     fun getSummonerIdBySummonerName(summonerName: String): String {
-        var searchData: SummonerDTO? = getAccountInfoBySummonerName(summonerName).body
+        var searchData: SummonerDto? = getAccountInfoBySummonerName(summonerName).body
         if (searchData != null) {
             return searchData.id
         }
