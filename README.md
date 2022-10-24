@@ -116,9 +116,9 @@ chore | Gradle의 수정
 
    > 소환사명을 바탕으로 소환사의 계정 정보에 대한 조회
 
-   | RequestType | parameterName | Type | Description | Optional | Default Value |
-         ----| ----|----|----|----|----|
-   | RequestParam | name | String | 조회하고자 하는 소환사명|true | |
+   | RequestType | parameterName | Type | Description | Optional | Default Value |  
+                     ----| ----|----|----|----|----|
+   | RequestParam | name | String | 조회하고자 하는 소환사명|true | |  
 
     ```
     Example :
@@ -139,9 +139,9 @@ chore | Gradle의 수정
 
    > 요청한 소환사의 랭크별 전적 정보를 조회해 반환한다.
 
-   | RequestType | parameterName |Type | Description | Optional | Default Value |
-            ----| ----|----|----|----|----|
-   | RequestParam |name | 조회하고자 하는 소환사명|true | | |
+   | RequestType | parameterName |Type | Description | Optional | Default Value |  
+                        ----| ----|----|----|----|----|  
+   | RequestParam |name | 조회하고자 하는 소환사명|true | |
 
    ```
    Example :
@@ -186,11 +186,11 @@ chore | Gradle의 수정
    > 조회를 요청한 Puuid의 최근 진행한 게임에 대한 MatchId List를 획득한다. .
 
    | RequestType | ParameterName | Type | Description | Optional | Default Value |  
-         ----| ----|----|----|----|----|
-   | RequestParam |puuid | String| 조회하고자 하는 소환사명 |true | |
-   | RequestParam |matchType | String | 조회하고자 하는 게임 타입 | false| ALL|
-   | RequestParam |start| Int | 조회를 시작해오고자 하는 Index Number| false | 0|
-   | RequestParam |count|Int| 조회해오고자 하는 건수| false | 0|
+                     ----| ----|----|----|----|----|  
+   | RequestParam |puuid | String| 조회하고자 하는 소환사명 |true | |  
+   | RequestParam |matchType | String | 조회하고자 하는 게임 타입 | false| ALL|  
+   | RequestParam |start| Int | 조회를 시작해오고자 하는 Index Number| false | 0|  
+   | RequestParam |count|Int| 조회해오고자 하는 건수| false | 0|  
 
      ```
     Example : 
@@ -229,12 +229,12 @@ chore | Gradle의 수정
    > 최근 경기 전적 조회 데이터를 반환한다.
    > ※ Rate Limit로 인하여 Count에 많은 숫자를 넣을 경우 개발자 ApiKey로는 검색에 제한이 발생한다
 
-   | RequestType | ParameterName | Type | Description | Optional | Default Value |
-         ----| ----|----|----|----|----|
-   | RequestParam |puuid | String| 조회하고자 하는 소환사명 |true | |
-   | RequestParam |matchType | String | 조회하고자 하는 게임 타입 | false| ALL|
-   | RequestParam |start| Int | 조회를 시작해오고자 하는 Index Number| false | 0|
-   | RequestParam |count|Int| 조회해오고자 하는 건수| false | 0|
+   | RequestType | ParameterName | Type | Description | Optional | Default Value |  
+                     ----| ----|----|----|----|----|  
+   | RequestParam |puuid | String| 조회하고자 하는 소환사명 |true | |  
+   | RequestParam |matchType | String | 조회하고자 하는 게임 타입 | false| ALL|  
+   | RequestParam |start| Int | 조회를 시작해오고자 하는 Index Number| false | 0|  
+   | RequestParam |count|Int| 조회해오고자 하는 건수| false | 0|  
 
     ```
    Example:
