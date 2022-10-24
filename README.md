@@ -1,5 +1,18 @@
 # YourGGTask
 
+## Index
+
+1. [개요](##개요)
+2. [Tech Stack](##tech-stack)
+3. [기능 정리](##기능-정리)
+4. [기능별 로직](##기능별-로직)
+5. [필수 설정](##필수-설정)
+6. [API](##api)
+7. [회고](##회고)
+8. [Use Reference List](##use-reference-List)
+
+----
+
 ## 개요
 
 > YOUR.GG Test Repository이며 Kotlin을 활용하여 다음과 같은 목표를 이루는것
@@ -73,7 +86,188 @@
 
 ---
 
-## Reference List
+## 필수 설정
+
+> Tomcat Port의 경우에는 Default Value인 `8080`을 사용.
+
+1. [Riot Developer](https://developer.riotgames.com/)에서 `API Key`를 발급받는다.
+2. `src/main/resources/riot.properties`에서 `api-key` 설정에 `1번`항목에서 발급받은 `API Key`를 입력한다.
+
+---
+
+## API
+
+1. `@GET`, `/summoner/info/by-summoner-name?name={summonerName}`
+
+   > 소환사명을 바탕으로 소환사의 계정 정보에 대한 조회
+
+   | RequestType | parameterName | Type | Description | Optional | Default Value |
+   --------------| ---------------|----|----|----|---- |---- |
+   | RequestParam | name | String | 조회하고자 하는 소환사명|true | |
+
+    ```
+    Example :
+    http://localhost:8080/summoner/info/by-summoner-name?name=눕는게 일상
+    
+    {
+        "accountId": "-CZ1UdXj_30sT4ZOb1PDJfiCCZvYTRnYRQncqn8LUBE",
+        "profileIconId": 585,
+        "revisionDate": 1665130481000,
+        "name": "눕는게일상",
+        "id": "zJM0b_kEhZhHKhq6qsL8f4nusWE-IEegWdeqqK3LA3CrnA",
+        "puuid": "KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg",
+        "summonerLevel": 230
+    }
+    ```
+
+2. `@GET`, `/summoner/rank-history/by-summoner-name?name={summonerName}`
+
+   > 요청한 소환사의 랭크별 전적 정보를 조회해 반환한다.
+
+   | RequestType | parameterName |Type | Description | Optional | Default Value |
+   --------------| ---------------|----|----|----|----|---- |
+   | RequestParam |name | 조회하고자 하는 소환사명|true | | |
+
+   ```
+   Example :
+   http://localhost:8080/summoner/rank-history/by-summoner-name?name=효총무
+   [
+      {
+          "leagueId": "0e6a9c5c-871c-4f42-bea3-8a58c544506d",
+          "summonerId": "v5oAwvnMASyc3y3gGZjBD-sYAzrK9_0Qp97P50s0KbdIgWk",
+          "summonerName": "효총무",
+          "queueType": "RANKED_FLEX_SR",
+          "tier": "SILVER",
+          "rank": "II",
+          "leaguePoints": 43,
+          "wins": 37,
+          "losses": 43,
+          "hotstreak": false,
+          "veteran": false,
+          "freshBlood": false,
+          "inactive": false,
+          "miniSeries": null
+      },
+      {
+          "leagueId": "6a0239e3-dddd-4dba-b86a-734600f230b8",
+          "summonerId": "v5oAwvnMASyc3y3gGZjBD-sYAzrK9_0Qp97P50s0KbdIgWk",
+          "summonerName": "효총무",
+          "queueType": "RANKED_SOLO_5x5",
+          "tier": "BRONZE",
+          "rank": "I",
+          "leaguePoints": 73,
+          "wins": 4,
+          "losses": 7,
+          "hotstreak": false,
+          "veteran": false,
+          "freshBlood": false,
+          "inactive": false,
+          "miniSeries": null
+      }
+   ]
+
+    ```
+3. `@GET`,`/match/ids`
+   > 조회를 요청한 Puuid의 최근 진행한 게임에 대한 MatchId List를 획득한다. .
+
+   | RequestType | ParameterName | Type | Description | Optional | Default Value |  
+   --------------| ---------------|----|---------------------|---------------|----|----|  
+   | RequestParam |puuid | String| 조회하고자 하는 소환사명 |true | |
+   | RequestParam |matchType | String | 조회하고자 하는 게임 타입 | false| ALL|
+   | RequestParam |start| Int | 조회를 시작해오고자 하는 Index Number| false | 0|
+   | RequestParam |count|Int| 조회해오고자 하는 건수| false | 0|
+
+     ```
+    Example : 
+    1. http://localhost:8080/match/ids?puuid=KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg
+    2. http://localhost:8080/match/ids?puuid=KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg&matchType=RANK
+    3. http://localhost:8080/match/ids?puuid=KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg&matchType=RANK&start=30
+    4. http://localhost:8080/match/ids?puuid=KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg&matchType=RANK&start=30&count=100
+    
+    
+    [
+         "KR_6160684900",
+         "KR_6160661735",
+         "KR_6160690509",
+         "KR_6160508793",
+         "KR_6130457885",
+         "KR_6130401099",
+         "KR_6130316540",
+         "KR_6125715102",
+         "KR_6125602712",
+         "KR_6125569665",
+         "KR_6118748223",
+         "KR_6118802018",
+         "KR_6118692418",
+         "KR_6114542182",
+         "KR_6114329157",
+         "KR_6114356878",
+         "KR_6114354178",
+         "KR_6114282423",
+         "KR_6114280376",
+         "KR_6113332670"
+     ]
+    ```
+
+
+4. `@GET`, `/match/list`
+   > 최근 경기 전적 조회 데이터를 반환한다.
+   > ※ Rate Limit로 인하여 Count에 많은 숫자를 넣을 경우 개발자 ApiKey로는 검색에 제한이 발생한다
+
+   | RequestType | ParameterName | Type | Description | Optional | Default Value |
+   |--------------| ---------------|----|---------------------|---------------|----|----|
+   | RequestParam |puuid | String| 조회하고자 하는 소환사명 |true | |
+   | RequestParam |matchType | String | 조회하고자 하는 게임 타입 | false| ALL|
+   | RequestParam |start| Int | 조회를 시작해오고자 하는 Index Number| false | 0|
+   | RequestParam |count|Int| 조회해오고자 하는 건수| false | 0|
+
+    ```
+   Example:
+   1. http://localhost:8080/match/list?puuid=KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg
+   2. http://localhost:8080/match/list?puuid=KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg&matchType=RANK
+   3. http://localhost:8080/match/list?puuid=KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg&matchType=RANK&start=30 
+   4. http://localhost:8080/match/list?puuid=KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg&matchType=RANK&start=30&count=20
+   [
+    {
+        "metadata": {
+            "dataVersion": "2",
+            "matchId": "KR_6160684900",
+            "participants": [
+                "YWpAEJHmHaJvHeG4bvew8nXo5OtbbIKE3dErg7A_sFSRZLRGJfeJ63MEcPnMB_v_sZJAvYHYIoUFvw",
+                "CxXfBzUbGysIgPIA1170-X7rlFqe-lbfxO2ZTob62Q5qctlIVpDJQSKUItcZHY-Vo03oUsRrimCJPw",
+                "739ltQM4TmV5KIN9RHVO-kS8tzWG6cz0H3d5KKmfePYHNs2RFOi_G40ZMhcd_I6cb51j6IR3N5GbtQ",
+                "0fh82kOHaSmW9bQ4BQJhzMYkP4eZVfinF8GvMXbv1FAJUpOdlYboDX4-TlggCJGCA5q6fPoTDkjn6w",
+                "a5GzH80EKYi5i2d3xynNUtz_EVbwoIkRThDz5hGAD3E0jGrKwM8zhQXbFhv_Ath8ekk3MePoGzGvQg",
+                "RT1nGvz-0P2ZgDNPprsAN3yM0l_zbl4BgoXjGteO7EhKoE0KWJZcQiIevU27MEUuxuabcJUEBRdKoQ",
+                "nOLH17awaF4b6MOO-dPtZzJJtAGUaE_woEC7MfLzGDwxvTSfDcg_Xx1AFsTSicDd5P1tQN7-SBXPRw",
+                "KCSH-FOif2FOuoIFTkXclVK__08YQq8d4H7t96SNpLOVWUU8VDFA_2byLFMGlV_L3jZ0p_cRj-TYUg",
+                "y3Q68ekIHvQYEfErvNrtdd9GWCWIHGi_0TcDNivbh0fLDT2hAouVqr-zPxTgbN848HRZc0K-651stA",
+                "dIzhAnrJZ5JDKApjJ0WCcLnEyWfPgRJodIoLEFuUaOXED6QcgBBwi8Q-Ef-pwPX5dh2ZNn5jX45-sg"
+            ]
+        },
+        "info": {
+            "gameCreation": 1665126653636,
+            "gameDuration": 2060,
+            "gameEndTimestamp": 1665128733844,
+            "gameId": 6160684900,
+            "gameMode": "CLASSIC",
+            "gameName": "teambuilder-match-6160684900",
+            "gameStartTimestamp": 1665126672788,
+            "gameType": "MATCHED_GAME",
+            "gameVersion": "12.19.471.6581",
+            "mapId": 11,
+            ~~~
+    }
+   ]
+    ```
+
+---
+
+## 회고
+
+---
+
+## Use Reference List
 
 > Kotlin자체가 처음이 아니다 보니 사용법에 대한 Reference를 계속 찾아보며 진행할 필요가 있었고, 참고한 Reference 포스트 리스트입니다.
 
