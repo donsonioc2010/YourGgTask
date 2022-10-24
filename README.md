@@ -139,9 +139,9 @@
 
    > 요청한 소환사의 랭크별 전적 정보를 조회해 반환한다.
 
-   | RequestType  | parameterName | Type                     | Description | Optional | Default Value |
-   | ------------ | ------------- | ------------------------ | ----------- | -------- | ------------- |
-   | RequestParam | name          | 조회하고자 하는 소환사명 | true        |          |
+   | RequestType  | parameterName | Type   | Description              | Optional | Default Value |
+   | ------------ | ------------- | ------ | ------------------------ | -------- | ------------- |
+   | RequestParam | name          | String | 조회하고자 하는 소환사명 | true     |
 
    ```
    Example :
