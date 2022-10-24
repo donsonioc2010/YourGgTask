@@ -32,6 +32,10 @@ dependencies {
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.jetbrains.kotlin:kotlin-test-junit5:1.7.20")
+    testImplementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.7.20")
+    testImplementation("org.jetbrains.kotlin:kotlin-test:1.7.20")
+    testImplementation("org.mockito.kotlin:mockito-kotlin:4.0.0")
 }
 
 tasks.withType<KotlinCompile> {
