@@ -17,7 +17,7 @@ internal class StringUtilsTest {
 
         logger.info("[StringUtilsTest : 공백 테스트 , 정상] : OrgSummoner : $orgSummonerName, NewSummoner: $newSummonerName")
 
-        assertEquals(newSummonerName, "눕는게%20일상%20일상")
+        assertEquals(newSummonerName, "눕는게일상일상")
     }
 
     @Test
